@@ -1,18 +1,21 @@
 package com.hema.assist.feature.apply.view;
 
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hema.assist.feature.apply.adapter.BannerAdapter;
 import com.hema.assist.common.base.BaseActivity;
+import com.hema.assist.common.utils.CommonUtil;
+import com.hema.assist.common.utils.IntentUtil;
 import com.hema.assist.common.views.BannerLayout;
 import com.hema.assist.component.ComponentFactory;
 import com.hema.assist.feature.apply.contract.StageApplyContract;
-import com.hema.assist.feature.home.view.HomeActivity;
 import com.wtw.p2p.R;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -24,13 +27,6 @@ public class StageApplyActivity extends BaseActivity {
     @Inject
     StageApplyContract.Presenter saPresenter;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stage_apply);
-    }
-
     @Override
     protected int getContentViewLayoutID() {
         return R.layout.activity_stage_apply;
@@ -41,10 +37,14 @@ public class StageApplyActivity extends BaseActivity {
         ComponentFactory.getActivityComponent().inject(this);
         ViewHolder holder = new ViewHolder(getWindow().getDecorView());
         saPresenter.attachUi(holder);
+        saPresenter.getBanner();
     }
 
 
     class ViewHolder implements StageApplyContract.View {
+
+        // region // 初始化
+
         @BindView(R.id.toolbar_back)
         ImageView toolbarBack;
         @BindView(R.id.toolbar_title)
@@ -62,10 +62,25 @@ public class StageApplyActivity extends BaseActivity {
         @BindView(R.id.btn_commit)
         Button btnCommit;
 
+        // endregion
+
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
 
             initToobar();
+
+            initBanner();
+
+            initStageApply();
+
+        }
+
+        private void initStageApply() {
+
+        }
+
+        private void initBanner() {
+
 
         }
 
@@ -75,7 +90,7 @@ public class StageApplyActivity extends BaseActivity {
             toolbarBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    StageApplyActivity.this.finish();
+                    IntentUtil.destroyActivity(StageApplyActivity.this, CommonUtil.enumActionType.ACTION_FORWARD);
                 }
             });
 
@@ -84,6 +99,30 @@ public class StageApplyActivity extends BaseActivity {
 
         }
 
+
+        @Override
+        public void setBanner(List<String> data) {
+            BannerAdapter adapter = new BannerAdapter(StageApplyActivity.this, data);
+            adapter.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
+                @Override
+                public void onItemClick(int position) {
+                    StageApplyActivity.this.toast(String.format(" 点击了 %s 项 ", position));
+                }
+            });
+
+            banner.setAdapter(adapter);
+            // 设置指示器图片
+            banner.setIndicatorDrawble(getResources().getDrawable(R.drawable.indicator),
+                    getResources().getDrawable(R.drawable.un_indicator));
+
+            authentication.setAdapter(adapter);
+
+        }
+
+        @Override
+        public void setStageAplly() {
+
+        }
 
     }
 }

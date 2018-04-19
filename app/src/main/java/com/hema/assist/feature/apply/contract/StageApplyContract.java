@@ -23,10 +23,18 @@ public interface StageApplyContract {
 
     interface View {
 
+        void setBanner(List<String> data);
+
+        void setStageAplly();
 
     }
 
     interface Presenter extends BasePresenter<View> {
+
+        void getBanner();
+
+        void getStageAplly();
+
 
 
     }
