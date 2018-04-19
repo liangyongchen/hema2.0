@@ -1,0 +1,159 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'walle'
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.hema.assist"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    //下面这两句在创建项目时不会自动生成，必需加上，是为了引用Java8的。
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    retrolambda {
+        javaVersion JavaVersion.VERSION_1_6
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res',
+                    'src/main/res/main'
+            ]
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(KEYSTORE_FILE)
+            keyAlias KEY_ALIAS
+            keyPassword KEYSTORE_PASSWORD
+            storePassword KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        //调试版本，无混淆
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+
+        //发布版本，有混淆
+        release {
+            minifyEnabled false
+            zipAlignEnabled true
+            shrinkResources false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        //开发环境
+        develop {
+            applicationId "com.hema.assist"
+            minSdkVersion rootProject.ext.minSdkVersion
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            versionCode rootProject.ext.versionCode
+            versionName rootProject.ext.versionName
+            buildConfigField("int", "ENV_TYPE", "1")
+            manifestPlaceholders = ["app_name": "河马科技test", "app_launcher_icon": "@mipmap/ic_launcher"]
+
+        }
+
+        //生产环境
+        product {
+            applicationId "com.hema.assist"
+            minSdkVersion rootProject.ext.minSdkVersion
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            versionCode rootProject.ext.versionCode
+            versionName rootProject.ext.versionName
+            buildConfigField("int", "ENV_TYPE", "2")
+            manifestPlaceholders = ["app_name": "河马科技", "app_launcher_icon": "@mipmap/ic_launcher"]
+
+        }
+    }
+
+    /* 解决Dagger2跟ButterKnife的冲突 */
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile "com.android.support:cardview-v7:$rootProject.ext.supportVersion"
+    testCompile 'junit:junit:4.12'
+    compile "com.android.support:recyclerview-v7:$rootProject.ext.supportVersion"
+
+    //打包用的
+    compile "com.meituan.android.walle:library:$rootProject.ext.walleVersion"
+    //日志打印工具
+    compile "com.orhanobut:logger:$rootProject.ext.loggerVersion"
+    //状态栏工具
+    compile "com.jaeger.statusbarutil:library:1.4.0"
+    //粘性头部-recyclerview
+    compile "com.timehop.stickyheadersrecyclerview:library:0.4.3@aar"
+    //万用adapter
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
+
+    //刷新控件
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'//没有使用特殊Header，可以不加这行
+
+    //butterknife 配置ButterKnife:注意使用compile导包 : compile会编译到最后的APK或library，apt不会
+    compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    compile "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+
+    //Dagger2 用来解偶MVP Dagger2的使用注意使用provided引用butterKnife中的library解决冲突
+    compile "org.glassfish:javax.annotation:10.0-b28"
+    compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
+    provided "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+
+    //retrofit2 + okhttp + gson
+    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:3.3.0"
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'//转换器，请求结果转换成Model
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'//配合Rxjava 使用
+
+    //rxjava、rxAndroid
+    compile "io.reactivex.rxjava2:rxjava:2.1.1"
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    //eventbus
+    compile 'org.greenrobot:eventbus:3.1.1'
+    //Glide 图片加载框架
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    compile 'org.apache.commons:commons-lang3:3.5'
+    compile 'commons-io:commons-io:2.5'
+}
+
+walle {
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels")
+//    apkFileNameFormat = 'wangtouwang-${packageName}-${buildType}-v${versionName}-build${versionCode}-${buildTime}-${channel}.apk'
+    apkFileNameFormat = 'wangtouwang-v${versionName}build${versionCode}-${buildType}-${buildTime}-${channel}.apk'
+    //configFile与channelFile两者必须存在一个，否则无法生成渠道包。两者都存在时优先执行configFile
+    //channelFile = new File("/data/WangTouNet/SVN/android/WTWP2p/channel")
+    //configFile = new File("${project.getProjectDir()}/config.json")
+}

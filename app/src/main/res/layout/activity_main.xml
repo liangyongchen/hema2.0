@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title"/>
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/app_default_split_line_color"/>
+
+    <RadioGroup
+        android:id="@+id/rg_tabbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        >
+
+        <RadioButton
+            android:id="@+id/rb_home"
+            android:text="首页"
+            android:drawableTop="@drawable/rb_home_drawable_selector"
+            style="@style/tabbar_tag_style"/>
+        <RadioButton
+            android:id="@+id/rb_invest"
+            android:text="投资"
+            android:drawableTop="@drawable/rb_invest_drawable_selector"
+            style="@style/tabbar_tag_style"/>
+        <RadioButton
+            android:id="@+id/rb_mine"
+            android:text="我的"
+            android:drawableTop="@drawable/rb_mine_drawable_selector"
+            style="@style/tabbar_tag_style"/>
+
+    </RadioGroup>
+
+</LinearLayout>

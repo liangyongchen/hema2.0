@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wtw.p2p">
+
+    <!-- start动态申请权限 -->
+
+
+    <!-- // android.permission-group.PHONE 组 -->
+    <!-- 获取设备型号 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 打电话 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 读写通话记录 -->
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+
+    <!-- // android.permission-group.CAMERA 组 -->
+    <!-- 拍照 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- // android.permission-group.CONTACTS 组 -->
+    <!-- 手机通讯录 -->
+    <!-- android6.0之后，获取通讯录的权限是，有application 不要再這里添加 -->
+    <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" /> -->
+    <!-- 6.0之前的版本中的权限设置是 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" /> <!-- 为了兼容低版本 -->
+
+
+    <!-- // android.permission-group.LOCATION 组 -->
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- // android.permission-group.STORAGE 组 -->
+    <!-- SD卡 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 创建文件 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- end动态申请权限 -->
+
+
+    <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name="com.hema.assist.app.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.hema.assist.feature.launcher.LauncherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hema.assist.MainActivity" />
+        <activity
+            android:name="com.hema.assist.feature.login.view.LoginActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name="com.hema.assist.feature.home.view.HomeActivity" />
+        <activity android:name="com.hema.assist.feature.apply.view.StageApplyActivity"></activity>
+    </application>
+
+</manifest>

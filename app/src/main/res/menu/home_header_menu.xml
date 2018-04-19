@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group>
+        <item
+            android:id="@+id/home_overdue"
+            android:icon="@drawable/list_title_date_s3"
+            android:title="逾期管理" />
+
+        <item
+            android:id="@+id/home_exception_handle"
+            android:icon="@drawable/list_title_ts_s3"
+            android:title="异常处理" />
+        <item
+            android:id="@+id/home_bank"
+            android:icon="@drawable/list_title_dk_s3"
+            android:title="银行代扣" />
+
+        <item
+            android:id="@+id/home_alter_pwd"
+            android:icon="@drawable/list_title_clock_s3"
+            android:title="修改密码" />
+        <item
+            android:id="@+id/home_problem"
+            android:icon="@drawable/list_title_qs_s3"
+            android:title="常见问题" />
+        <item
+            android:id="@+id/home_feedback"
+            android:icon="@drawable/list_title_jy_s3"
+            android:title="问题反馈" />
+        <item
+            android:id="@+id/home_set"
+            android:icon="@drawable/list_title_sz_s3"
+            android:title="设置中心" />
+
+
+    </group>
+
+</menu>

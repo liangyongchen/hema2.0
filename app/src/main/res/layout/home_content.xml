@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        l
+
+        <ImageView
+            android:layout_width="57dp"
+            android:layout_height="57dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/logo_s3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sasas"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_role"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+
+            <!--  android:entries="@array/languages" -->
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/sale_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@null"
+                android:spinnerMode="dialog"
+                android:theme="@style/android:Theme.Light"
+                app:theme="@style/spinnerTheme" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="77dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/btn_stage_apply"
+                style="@style/home_lineLayout"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/home_imageView"
+                    android:src="@drawable/index_title1_s3" />
+
+                <TextView
+                    style="@style/home_title_textView"
+                    android:text="分期申请" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/btn_calculator"
+                style="@style/home_lineLayout"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/home_imageView"
+                    android:src="@drawable/index_title2_s3" />
+
+
+                <TextView
+                    style="@style/home_title_textView"
+                    android:text="计算机" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/btn_apply"
+                style="@style/home_lineLayout"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/home_imageView"
+                    android:src="@drawable/index_title3_s3" />
+
+
+                <TextView
+                    style="@style/home_title_textView"
+                    android:text="申请列表" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/btn_order"
+                style="@style/home_lineLayout"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/home_imageView"
+                    android:src="@drawable/index_title4_s3" />
+
+                <TextView
+                    style="@style/home_title_textView"
+                    android:text="订单列表" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 按下去显示的图片 -->
+    <item android:drawable="@drawable/login_xz_s2" android:state_checked="true"></item>
+    <!-- 没按下去显示的图片 -->
+    <item android:drawable="@drawable/login_xzhong_s2" android:state_checked="false"></item>
+
+</selector>

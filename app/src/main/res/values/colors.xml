@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--标题栏的颜色-->
+    <color name="colorPrimary">#019cdf</color>
+    <!--状态栏的颜色-->
+    <color name="colorPrimaryDark">#019cdf</color>
+
+    <!--控件的选中颜色，即checked或selected状态的颜色。-->
+    <!--<color name="colorAccent">@android:color/transparent</color>-->
+    <color name="colorAccent">@color/white</color>
+
+
+    <color name="light0_blue">#b2ebff</color>
+    <color name="light1_blue">#10a2e1</color>
+
+    <color name="app_default_background_color">#f0f0f0</color>
+    <color name="app_default_split_line_color">#F5F3F1</color>
+    <color name="app_theme_color">#ff4850</color>
+    <color name="app_nav_color">@color/white</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#333333</color>
+
+    <color name="color_hex_333333">#333333</color>
+    <color name="color_hex_555555">#555555</color>
+    <color name="color_hex_777777">#777777</color>
+    <color name="color_hex_999999">#999999</color>
+    <color name="color_hex_aaaaaa">#aaaaaa</color>
+
+
+    <color name="transparent_pressed">#22000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="system_bar_color_white">@color/white</color>
+    <color name="system_bar_color_red">@color/app_theme_color</color>
+
+
+</resources>
