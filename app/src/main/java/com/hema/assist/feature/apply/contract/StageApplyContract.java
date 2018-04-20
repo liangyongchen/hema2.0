@@ -4,6 +4,7 @@ import com.hema.assist.common.action.Action2;
 import com.hema.assist.common.base.BasePresenter;
 import com.hema.assist.common.base.BaseResult;
 import com.hema.assist.entity.LoginInfo;
+import com.hema.assist.feature.apply.adapter.CardCertificationAdapter;
 
 import java.util.List;
 
@@ -25,13 +26,17 @@ public interface StageApplyContract {
 
         void setBanner(List<String> data);
 
+        void setCard(List<CardCertificationAdapter.ItemModel> data);
+
         void setStageAplly();
 
     }
 
     interface Presenter extends BasePresenter<View> {
 
-        void getBanner();
+        void getBannerData();
+
+        void getCardData();
 
         void getStageAplly();
 

@@ -5,33 +5,37 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.hema.assist.common.views.BannerLayout;
 import com.wtw.p2p.R;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by 河马安卓 on 2018/4/19.
+ * 卡片认证适配器
+ * Created by 河马安卓 on 2018/4/20.
  */
 
-public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ChildViewHolder> {
+public class CardCertificationAdapter extends RecyclerView.Adapter<CardCertificationAdapter.ChildViewHolder> {
 
     private Context mContext;
 
-    private List<String> mData;
+    private List<ItemModel> mData;
 
     private BannerLayout.OnBannerItemClickListener onBannerItemClickListener;
 
-    public BannerAdapter(Context context, List<String> list) {
+    public CardCertificationAdapter(Context context, List<ItemModel> list) {
         this.mContext = context;
         this.mData = list;
     }
+
 
     public void setOnBannerItemClickListener(BannerLayout.OnBannerItemClickListener onBannerItemClickListener) {
         this.onBannerItemClickListener = onBannerItemClickListener;
@@ -40,7 +44,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ChildViewH
 
     @Override
     public ChildViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ChildViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.banner_item_image, parent, false));
+        return new ChildViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.banner_card_image, parent, false));
     }
 
 
@@ -70,8 +74,14 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ChildViewH
 
     class ChildViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.image)
-        ImageView imageView;
+        @BindView(R.id.tv_title)
+        TextView tvTitle;
+        @BindView(R.id.iv_card)
+        ImageView ivCard;
+        @BindView(R.id.tv_msg)
+        TextView tvMsg;
+        @BindView(R.id.btn_authentication)
+        TextView btnAuthentication;
 
         public ChildViewHolder(View itemView) {
             super(itemView);
@@ -80,19 +90,27 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.ChildViewH
 
 
         public void setImageView(final int position) {
-            String url = mData.get(position);
-
-            Glide.with(mContext).load(url).into(imageView);
-
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onBannerItemClickListener != null) {
-                        onBannerItemClickListener.onItemClick(position);
-                    }
-                }
-            });
-
+            tvTitle.setText(String.format("%s", mData.get(position).title));
+            ivCard.setImageDrawable(mContext.getResources().getDrawable(mData.get(position).img));
+            tvMsg.setText(String.format("%s", mData.get(position).msg));
+            btnAuthentication.setText(String.format("%s", mData.get(position).btn));
         }
+    }
+
+    public static class ItemModel implements Serializable {
+
+        public String title;
+        public int img;
+        public String msg;
+        public String btn;
+
+        public ItemModel(String title, int img, String msg, String btn) {
+            this.title = title;
+            this.img = img;
+            this.msg = msg;
+            this.btn = btn;
+        }
+
+
     }
 }

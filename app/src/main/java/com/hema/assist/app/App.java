@@ -2,6 +2,7 @@ package com.hema.assist.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Typeface;
 
 import com.hema.assist.common.utils.DeviceUtil;
 import com.hema.assist.common.utils.SPHelper;
@@ -28,6 +29,13 @@ public class App extends Application {
 
     public static App sInstance;
     public static Context context;
+
+    public static App getContext() {
+        if (context == null) {
+            context = new App();
+        }
+        return (App) context;
+    }
 
     //static 代码段可以防止内存泄露
     static {
@@ -57,6 +65,15 @@ public class App extends Application {
         });
     }
 
+
+    // 字体图标
+    private Typeface iconTypeFace;
+
+    public Typeface getIconTypeFace() {
+        return iconTypeFace;
+    }
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -65,9 +82,13 @@ public class App extends Application {
         context = getApplicationContext();
         initApp();
 
+        // 设置矢量字体初始化，防止在Activity加载造成卡顿现象
+        this.iconTypeFace = Typeface.createFromAsset(getAssets(), "iconfont/iconfont.ttf");
+
+
     }
 
-    private void initApp(){
+    private void initApp() {
         SPHelper.init(this);
         DeviceUtil.init(this);
 //        Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler());

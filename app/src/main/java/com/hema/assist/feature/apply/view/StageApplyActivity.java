@@ -12,6 +12,7 @@ import com.hema.assist.common.utils.CommonUtil;
 import com.hema.assist.common.utils.IntentUtil;
 import com.hema.assist.common.views.BannerLayout;
 import com.hema.assist.component.ComponentFactory;
+import com.hema.assist.feature.apply.adapter.CardCertificationAdapter;
 import com.hema.assist.feature.apply.contract.StageApplyContract;
 import com.wtw.p2p.R;
 
@@ -37,7 +38,8 @@ public class StageApplyActivity extends BaseActivity {
         ComponentFactory.getActivityComponent().inject(this);
         ViewHolder holder = new ViewHolder(getWindow().getDecorView());
         saPresenter.attachUi(holder);
-        saPresenter.getBanner();
+        saPresenter.getBannerData();
+        saPresenter.getCardData();
     }
 
 
@@ -115,8 +117,21 @@ public class StageApplyActivity extends BaseActivity {
             banner.setIndicatorDrawble(getResources().getDrawable(R.drawable.indicator),
                     getResources().getDrawable(R.drawable.un_indicator));
 
-            authentication.setAdapter(adapter);
+        }
 
+        @Override
+        public void setCard(List<CardCertificationAdapter.ItemModel> data) {
+
+            CardCertificationAdapter adapter1 = new CardCertificationAdapter(StageApplyActivity.this, data);
+            adapter1.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
+                @Override
+                public void onItemClick(int position) {
+                    StageApplyActivity.this.toast(String.format(" 点击了 %s 项 ", position));
+                }
+            });
+
+            authentication.setAdapter(adapter1);
+            authentication.setShowIndicator(false);
         }
 
         @Override
