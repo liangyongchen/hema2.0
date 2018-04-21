@@ -1,6 +1,10 @@
 package com.hema.assist.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
+
+import retrofit2.http.Query;
 
 /**
  * Created by 河马安卓 on 2018/4/20.
@@ -20,14 +24,57 @@ public class StageApplyInfo implements Serializable {
      * YHK : 1   // 银行卡
      */
 
-    public int WCYZ;
+    @SerializedName("WCYZ")
+    private int WCYZ;
 
-    public int SJRZ;
+    @SerializedName("SJRZ")
+    private int SJRZ;
 
-    public int GRXX;
+    @SerializedName("GRXX")
+    private int GRXX;
 
-    public int SFRZ;
+    @SerializedName("SFRZ")
+    private int SFRZ;
 
-    public int YHK;
+    private int YHK;
 
+    public int getWCYZ() {
+        return WCYZ;
+    }
+
+    public void setWCYZ(int WCYZ) {
+        this.WCYZ = WCYZ;
+    }
+
+    public int getSJRZ() {
+        return SJRZ;
+    }
+
+    public void setSJRZ(int SJRZ) {
+        this.SJRZ = SJRZ;
+    }
+
+    public int getGRXX() {
+        return GRXX;
+    }
+
+    public void setGRXX(int GRXX) {
+        this.GRXX = GRXX;
+    }
+
+    public int getSFRZ() {
+        return SFRZ;
+    }
+
+    public void setSFRZ(int SFRZ) {
+        this.SFRZ = SFRZ;
+    }
+
+    public int getYHK() {
+        return YHK;
+    }
+
+    public void setYHK(int YHK) {
+        this.YHK = YHK;
+    }
 }

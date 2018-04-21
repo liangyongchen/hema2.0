@@ -23,7 +23,7 @@ public interface StageApplyContract {
 
 
         // 返回认证界面的列表信息
-        void userInfoStep(String token, Action3<Boolean, String, BaseResult<StageApplyInfo>> callBack);
+        void userInfoStep(int id,String token, Action3<Boolean, String, BaseResult<StageApplyInfo>> callBack);
 
 
     }
@@ -52,7 +52,7 @@ public interface StageApplyContract {
         void getStageAplly();
 
         // 刚进入界面，获取数据
-        void userInfoStep(String token);
+        void userInfoStep(int id,String token);
 
 
     }

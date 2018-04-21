@@ -41,6 +41,9 @@ public class HomeActivity extends BaseActivity {
 
     public BaseResult<LoginInfo> mData;
 
+    // 标记门店用户id
+    private int ID;
+
     @Override
     protected void getBundleExtras(Bundle extras) {
         super.getBundleExtras(extras);
@@ -66,6 +69,9 @@ public class HomeActivity extends BaseActivity {
 
 
     class ViewHolder implements HomeContract.View, NavigationView.OnNavigationItemSelectedListener {
+
+        // region // 初始化控件
+
         @BindView(R.id.toolbar_back)
         ImageView toolbarBack;
         @BindView(R.id.toolbar_title)
@@ -93,12 +99,15 @@ public class HomeActivity extends BaseActivity {
         @BindView(R.id.drawer_layout)
         DrawerLayout drawerLayout;
 
+
         // 个人中心
         private TextView tvOwnName; // 销售名称
         private ImageView ivAvatar;  // 先手头像
         private TextView tv_month_commission;  // 本月佣金
         private TextView tv_month_achievement; // 本月业绩
         private TextView tv_today_achievement; // 今日业绩
+
+        // endregion
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
@@ -116,7 +125,9 @@ public class HomeActivity extends BaseActivity {
             btnStageApply.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    IntentUtil.startActivity(HomeActivity.this, StageApplyActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
+                    Bundle b = new Bundle();
+                    b.putInt("id", ID);
+                    IntentUtil.startActivity(HomeActivity.this, StageApplyActivity.class, b, CommonUtil.enumActionType.ACTION_FORWARD);
                 }
             });
 
@@ -220,10 +231,11 @@ public class HomeActivity extends BaseActivity {
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 salePoints.setAdapter(arrayAdapter);
                 salePoints.setSelection(0); // 默认选择第一个
+                ID = data.get(0).getId();// 开始默认选择第一个门店id
                 salePoints.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                        ID = data.get(position).getId();
                     }
 
                     @Override
@@ -231,6 +243,7 @@ public class HomeActivity extends BaseActivity {
 
                     }
                 });
+                ID = data.get(0).getId();// 开始默认选择第一个门店id
             }
         }
 
@@ -260,8 +273,10 @@ public class HomeActivity extends BaseActivity {
                 case R.id.home_problem: // 常见问题
                     break;
                 case R.id.home_feedback: // 问题反馈
+                    IntentUtil.startActivity(HomeActivity.this, AuestionBackActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
                     break;
                 case R.id.home_set: // 设置中心
+                    IntentUtil.startActivity(HomeActivity.this, SetActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
                     break;
             }
 

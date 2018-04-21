@@ -6,8 +6,10 @@ apply plugin: 'walle'
 
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+//    compileSdkVersion 'Unrecognized value'
+//    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion 25
+    buildToolsVersion '25.0.3'
     defaultConfig {
         applicationId "com.hema.assist"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -96,7 +98,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -108,47 +110,61 @@ dependencies {
 
     //打包用的
     compile "com.meituan.android.walle:library:$rootProject.ext.walleVersion"
+
     //日志打印工具
     compile "com.orhanobut:logger:$rootProject.ext.loggerVersion"
+
     //状态栏工具
-    compile "com.jaeger.statusbarutil:library:1.4.0"
+    compile 'com.jaeger.statusbarutil:library:1.4.0'
+
     //粘性头部-recyclerview
-    compile "com.timehop.stickyheadersrecyclerview:library:0.4.3@aar"
+    compile 'com.timehop.stickyheadersrecyclerview:library:0.4.3@aar'
+
     //万用adapter
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
 
     //刷新控件
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
-    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'//没有使用特殊Header，可以不加这行
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
+
+    //没有使用特殊Header，可以不加这行
 
     //butterknife 配置ButterKnife:注意使用compile导包 : compile会编译到最后的APK或library，apt不会
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
     compile "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
 
     //Dagger2 用来解偶MVP Dagger2的使用注意使用provided引用butterKnife中的library解决冲突
-    compile "org.glassfish:javax.annotation:10.0-b28"
+    compile 'org.glassfish:javax.annotation:10.0-b28'
     compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
     provided "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
 
     //retrofit2 + okhttp + gson
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    compile "com.squareup.okhttp3:logging-interceptor:3.3.0"
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'//转换器，请求结果转换成Model
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'//配合Rxjava 使用
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    //转换器，请求结果转换成Model
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    //配合Rxjava 使用
 
     //rxjava、rxAndroid
-    compile "io.reactivex.rxjava2:rxjava:2.1.1"
+    compile 'io.reactivex.rxjava2:rxjava:2.1.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-//    compile 'com.f2prateek.rx.preferences:rx-preferences:1.0.1'
-//    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
-//    compile 'com.trello:rxlifecycle:0.4.0'
-//    compile 'com.trello:rxlifecycle-components:0.4.0'
+
+    //    compile 'com.f2prateek.rx.preferences:rx-preferences:1.0.1'
+
+    //    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+
+    //    compile 'com.trello:rxlifecycle:0.4.0'
+
+    //    compile 'com.trello:rxlifecycle-components:0.4.0'
 
     //eventbus
     compile 'org.greenrobot:eventbus:3.1.1'
+
     //Glide 图片加载框架
     compile 'com.github.bumptech.glide:glide:3.7.0'
-
     compile 'org.apache.commons:commons-lang3:3.5'
     compile 'commons-io:commons-io:2.5'
 }

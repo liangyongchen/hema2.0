@@ -43,13 +43,13 @@ public class ChangePasswordModelImpl implements ChangePasswordContract.Model {
                 .subscribe(result -> {
 
                     if (result.isSucess()) {
-                        callBack.call(true, "登录成功", result);
+                        callBack.call(true, "修改成功", result);
                     } else {
                         callBack.call(false, result.message, null);
                     }
 
                 }, throwable -> {
-                    callBack.call(false, "登录失败", null);
+                    callBack.call(false, "修改失败", null);
                 });
 
     }

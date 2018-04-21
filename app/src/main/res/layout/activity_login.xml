@@ -39,7 +39,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:background="@drawable/shape_rect_r5_white"
+        android:background="@drawable/shape_rect_r5_blue"
         android:drawableLeft="@drawable/login_yh_s2"
         android:drawablePadding="5dp"
         android:hint="请输入登录名称"
@@ -57,7 +57,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:background="@drawable/shape_rect_r5_white"
+        android:background="@drawable/shape_rect_r5_blue"
         android:drawableLeft="@drawable/login_clock_s2"
         android:drawablePadding="5dp"
         android:hint="请输入密码"
@@ -75,7 +75,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:background="@drawable/shape_rect_r5_white"
+        android:background="@drawable/shape_rect_r5_blue"
         android:gravity="center"
         android:orientation="horizontal">
 

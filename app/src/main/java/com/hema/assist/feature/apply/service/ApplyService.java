@@ -21,6 +21,7 @@ public interface ApplyService {
     // 认证模块服务
     @POST(NetworkConfig.PROJECT_NAME + "/api/loanOrder/userInfoStep")
     Observable<BaseResult<StageApplyInfo>> userInfoStep(
+            @Query("id") Integer id,
             @Query("token") String token);
 
 }

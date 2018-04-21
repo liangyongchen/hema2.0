@@ -29,9 +29,9 @@ public class StageApplyModelImpl implements StageApplyContract.Model {
 
 
     @Override
-    public void userInfoStep(String token, Action3<Boolean, String, BaseResult<StageApplyInfo>> callBack) {
+    public void userInfoStep(int id, String token, Action3<Boolean, String, BaseResult<StageApplyInfo>> callBack) {
 
-        saService.userInfoStep(token)
+        saService.userInfoStep(id, token)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(result -> {

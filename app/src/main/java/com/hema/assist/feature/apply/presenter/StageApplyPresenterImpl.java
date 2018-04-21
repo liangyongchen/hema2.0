@@ -54,9 +54,9 @@ public class StageApplyPresenterImpl extends BasePresenterImpl<StageApplyContrac
     }
 
     @Override
-    public void userInfoStep(String token) {
+    public void userInfoStep(int id, String token) {
 
-        applyModel.userInfoStep(token, new Action3<Boolean, String, BaseResult<StageApplyInfo>>() {
+        applyModel.userInfoStep(id, token, new Action3<Boolean, String, BaseResult<StageApplyInfo>>() {
             @Override
             public void call(Boolean aBoolean, String s, BaseResult<StageApplyInfo> result) {
                 if (aBoolean) {
@@ -74,7 +74,7 @@ public class StageApplyPresenterImpl extends BasePresenterImpl<StageApplyContrac
     private void getCardData(StageApplyInfo data) {
 
         List<CardCertificationAdapter.ItemModel> list = new ArrayList<>();
-        if (data.WCYZ == 1) {
+        if (data.getWCYZ() == 1) {
             list.add(new CardCertificationAdapter.ItemModel("身份认证", R.drawable.fenqi_one_s2, "请出示身份证正反面", "已完成", true));
             list.add(new CardCertificationAdapter.ItemModel("银行卡", R.drawable.fenqi_two_s2, "请出示身份证正反面", "已完成", true));
             list.add(new CardCertificationAdapter.ItemModel("个人信息", R.drawable.fenqi_three_s2, "请出示身份证正反面", "已完成", true));
@@ -83,7 +83,7 @@ public class StageApplyPresenterImpl extends BasePresenterImpl<StageApplyContrac
         }
 
         // 身份认证
-        if (data.SFRZ == 1) {
+        if (data.getSFRZ() == 1) {
             list.add(new CardCertificationAdapter.ItemModel("身份认证", R.drawable.fenqi_one_s2, "请出示身份证正反面", "已完成", true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc1_s2);
         } else {
@@ -92,7 +92,7 @@ public class StageApplyPresenterImpl extends BasePresenterImpl<StageApplyContrac
         }
 
         // 银行卡
-        if (data.YHK == 1) {
+        if (data.getYHK() == 1) {
             list.add(new CardCertificationAdapter.ItemModel("银行卡", R.drawable.fenqi_two_s2, "请出示身份证正反面", "已完成", true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc2_s2);
         } else {
@@ -101,7 +101,7 @@ public class StageApplyPresenterImpl extends BasePresenterImpl<StageApplyContrac
         }
 
         // 个人信息
-        if (data.GRXX == 1) {
+        if (data.getGRXX() == 1) {
             list.add(new CardCertificationAdapter.ItemModel("个人信息", R.drawable.fenqi_three_s2, "请出示身份证正反面", "已完成", true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc3_s2);
         } else {
@@ -111,7 +111,7 @@ public class StageApplyPresenterImpl extends BasePresenterImpl<StageApplyContrac
         }
 
         // 手机认证
-        if (data.SJRZ == 1) {
+        if (data.getSJRZ() == 1) {
             list.add(new CardCertificationAdapter.ItemModel("手机认证", R.drawable.fenqi_four_s2, "请出示身份证正反面", "已完成", true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc4_s2);
         } else {

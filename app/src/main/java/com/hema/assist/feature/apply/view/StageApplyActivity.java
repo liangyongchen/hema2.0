@@ -1,5 +1,6 @@
 package com.hema.assist.feature.apply.view;
 
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import com.hema.assist.feature.apply.adapter.CardCertificationAdapter;
 import com.hema.assist.feature.apply.contract.StageApplyContract;
 import com.wtw.p2p.R;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -31,6 +34,16 @@ public class StageApplyActivity extends BaseActivity {
     @Inject
     StageApplyContract.Presenter saPresenter;
 
+    private int id;
+
+    @Override
+    protected void getBundleExtras(Bundle extras) {
+        super.getBundleExtras(extras);
+        if (extras != null) {
+            id = extras.getInt("id");
+        }
+    }
+
     @Override
     protected int getContentViewLayoutID() {
         return R.layout.activity_stage_apply;
@@ -42,7 +55,8 @@ public class StageApplyActivity extends BaseActivity {
         ViewHolder holder = new ViewHolder(getWindow().getDecorView());
         saPresenter.attachUi(holder);
         saPresenter.getBannerData();
-        saPresenter.userInfoStep(APIUtils.token);
+        if (!StringUtils.isEmpty(String.valueOf(id)))
+            saPresenter.userInfoStep(id, APIUtils.token);
     }
 
 
@@ -137,7 +151,8 @@ public class StageApplyActivity extends BaseActivity {
                 @Override
                 public void onItemClick(View v, int position) {
                     // 认证跳转
-                    
+                    toast(String.format("跳转 %s  ，点击了", position));
+
                 }
             });
 
