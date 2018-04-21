@@ -1,6 +1,8 @@
 package com.hema.assist.module;
 
+import com.hema.assist.feature.home.contract.ChangePasswordContract;
 import com.hema.assist.feature.apply.contract.StageApplyContract;
+import com.hema.assist.feature.home.model.ChangePasswordModelImpl;
 import com.hema.assist.feature.apply.model.StageApplyModelImpl;
 import com.hema.assist.feature.home.contract.HomeContract;
 import com.hema.assist.feature.home.model.HomeModelImpl;
@@ -36,6 +38,12 @@ public class ModelModule {
     @Provides
     @ActivityScope
     StageApplyContract.Model modelStageApply(StageApplyModelImpl impl) {
+        return impl;
+    }
+
+    @Provides
+    @ActivityScope
+    ChangePasswordContract.Model changeApply(ChangePasswordModelImpl impl) {
         return impl;
     }
 

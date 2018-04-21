@@ -66,7 +66,8 @@
             android:name="com.hema.assist.feature.login.view.LoginActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name="com.hema.assist.feature.home.view.HomeActivity" />
-        <activity android:name="com.hema.assist.feature.apply.view.StageApplyActivity"></activity>
+        <activity android:name="com.hema.assist.feature.apply.view.StageApplyActivity" />
+        <activity android:name="com.hema.assist.feature.home.view.ChangePasswordActivity"></activity>
     </application>
 
 </manifest>

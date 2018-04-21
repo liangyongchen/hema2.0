@@ -1,5 +1,6 @@
 package com.hema.assist.component;
 
+import com.hema.assist.feature.home.view.ChangePasswordActivity;
 import com.hema.assist.feature.apply.view.StageApplyActivity;
 import com.hema.assist.feature.home.view.HomeActivity;
 import com.hema.assist.feature.login.view.LoginActivity;
@@ -25,4 +26,6 @@ public interface ActivityComponent {
     void inject(HomeActivity activity);
 
     void inject(StageApplyActivity activity);
+
+    void inject(ChangePasswordActivity activity);
 }

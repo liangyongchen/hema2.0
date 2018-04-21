@@ -1,9 +1,11 @@
 package com.hema.assist.feature.apply.contract;
 
 import com.hema.assist.common.action.Action2;
+import com.hema.assist.common.action.Action3;
 import com.hema.assist.common.base.BasePresenter;
 import com.hema.assist.common.base.BaseResult;
 import com.hema.assist.entity.LoginInfo;
+import com.hema.assist.entity.StageApplyInfo;
 import com.hema.assist.feature.apply.adapter.CardCertificationAdapter;
 
 import java.util.List;
@@ -20,6 +22,10 @@ public interface StageApplyContract {
     interface Model {
 
 
+        // 返回认证界面的列表信息
+        void userInfoStep(String token, Action3<Boolean, String, BaseResult<StageApplyInfo>> callBack);
+
+
     }
 
     interface View {
@@ -28,7 +34,14 @@ public interface StageApplyContract {
 
         void setCard(List<CardCertificationAdapter.ItemModel> data);
 
+        void setIvSpeedSrc(int id);
+
         void setStageAplly();
+
+        // 返回认证界面列表信息
+        void userInfoStepSuccess(String msg,BaseResult<StageApplyInfo> callBack);
+
+        void userInfoStepFailed(String msg);
 
     }
 
@@ -36,10 +49,10 @@ public interface StageApplyContract {
 
         void getBannerData();
 
-        void getCardData();
-
         void getStageAplly();
 
+        // 刚进入界面，获取数据
+        void userInfoStep(String token);
 
 
     }

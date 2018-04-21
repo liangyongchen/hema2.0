@@ -67,6 +67,7 @@ public class LoginModelImpl implements LoginContract.Model {
                 .subscribe(result -> {
 
                     if (result.isSucess()) {
+                        APIUtils.token = result.getData().getToken();
                         callBack.call(true, "登录成功", result);
                     } else {
                         callBack.call(false, result.message, null);

@@ -1,6 +1,8 @@
 package com.hema.assist.module;
 
+import com.hema.assist.feature.home.contract.ChangePasswordContract;
 import com.hema.assist.feature.apply.contract.StageApplyContract;
+import com.hema.assist.feature.home.presenter.ChangePasswordPresenterImpl;
 import com.hema.assist.feature.apply.presenter.StageApplyPresenterImpl;
 import com.hema.assist.feature.home.contract.HomeContract;
 import com.hema.assist.feature.home.presenter.HomePresenterImpl;
@@ -35,6 +37,12 @@ public class PresenterModule {
     @Provides
     @ActivityScope
     StageApplyContract.Presenter presenterStageApply(StageApplyPresenterImpl impl) {
+        return impl;
+    }
+
+    @Provides
+    @ActivityScope
+    ChangePasswordContract.Presenter presenterChangePwd(ChangePasswordPresenterImpl impl) {
         return impl;
     }
 

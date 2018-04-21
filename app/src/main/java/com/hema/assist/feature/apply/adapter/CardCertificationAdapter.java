@@ -88,12 +88,17 @@ public class CardCertificationAdapter extends RecyclerView.Adapter<CardCertifica
             ButterKnife.bind(this, itemView);
         }
 
-
         public void setImageView(final int position) {
             tvTitle.setText(String.format("%s", mData.get(position).title));
             ivCard.setImageDrawable(mContext.getResources().getDrawable(mData.get(position).img));
             tvMsg.setText(String.format("%s", mData.get(position).msg));
             btnAuthentication.setText(String.format("%s", mData.get(position).btn));
+            btnAuthentication.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mItemClick.onItemClick(v,position);
+                }
+            });
         }
     }
 
@@ -104,13 +109,27 @@ public class CardCertificationAdapter extends RecyclerView.Adapter<CardCertifica
         public String msg;
         public String btn;
 
-        public ItemModel(String title, int img, String msg, String btn) {
+        // 标识是否已经认证 true 已经认证 ，false，没有认证
+        boolean isSign;
+
+        public ItemModel(String title, int img, String msg, String btn, boolean isSign) {
             this.title = title;
             this.img = img;
             this.msg = msg;
             this.btn = btn;
+            this.isSign = isSign;
         }
 
-
     }
+
+    public interface ItemClick {
+        void onItemClick(View v,int position);
+    }
+
+    private ItemClick mItemClick;
+
+    public void setOnItemClick(ItemClick itemClick) {
+        this.mItemClick = itemClick;
+    }
+
 }

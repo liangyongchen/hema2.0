@@ -6,6 +6,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hema.assist.common.base.BaseResult;
+import com.hema.assist.common.network.APIUtils;
+import com.hema.assist.entity.StageApplyInfo;
 import com.hema.assist.feature.apply.adapter.BannerAdapter;
 import com.hema.assist.common.base.BaseActivity;
 import com.hema.assist.common.utils.CommonUtil;
@@ -39,7 +42,7 @@ public class StageApplyActivity extends BaseActivity {
         ViewHolder holder = new ViewHolder(getWindow().getDecorView());
         saPresenter.attachUi(holder);
         saPresenter.getBannerData();
-        saPresenter.getCardData();
+        saPresenter.userInfoStep(APIUtils.token);
     }
 
 
@@ -130,14 +133,38 @@ public class StageApplyActivity extends BaseActivity {
                 }
             });
 
+            adapter1.setOnItemClick(new CardCertificationAdapter.ItemClick() {
+                @Override
+                public void onItemClick(View v, int position) {
+                    // 认证跳转
+                    
+                }
+            });
+
             authentication.setAdapter(adapter1);
             authentication.setShowIndicator(false);
+        }
+
+        @Override
+        public void setIvSpeedSrc(int id) {
+            ivSpeed.setImageDrawable(getResources().getDrawable(id));
         }
 
         @Override
         public void setStageAplly() {
 
         }
+
+        @Override
+        public void userInfoStepSuccess(String msg, BaseResult<StageApplyInfo> callBack) {
+
+        }
+
+        @Override
+        public void userInfoStepFailed(String msg) {
+
+        }
+
 
     }
 }

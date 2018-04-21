@@ -1,7 +1,8 @@
 package com.hema.assist.module;
 
 import com.hema.assist.common.network.ServiceFactory;
-import com.hema.assist.feature.apply.service.StageApplyService;
+import com.hema.assist.feature.apply.service.ApplyService;
+import com.hema.assist.feature.home.service.HomeService;
 import com.hema.assist.feature.login.service.LoginService;
 import com.hema.assist.scope.ActivityScope;
 
@@ -26,8 +27,14 @@ public class NetworkModule {
 
     @Provides
     @ActivityScope
-    StageApplyService stageApplyService() {
-        return ServiceFactory.getInstance().createService(StageApplyService.class);
+    ApplyService stageApplyService() {
+        return ServiceFactory.getInstance().createService(ApplyService.class);
+    }
+
+    @Provides
+    @ActivityScope
+    HomeService changePasswordService() {
+        return ServiceFactory.getInstance().createService(HomeService.class);
     }
 
 }

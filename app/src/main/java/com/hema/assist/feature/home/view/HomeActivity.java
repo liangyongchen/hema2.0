@@ -255,6 +255,7 @@ public class HomeActivity extends BaseActivity {
                 case R.id.home_bank: // 银行代扣
                     break;
                 case R.id.home_alter_pwd: // 修改密码
+                    IntentUtil.startActivity(HomeActivity.this, ChangePasswordActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
                     break;
                 case R.id.home_problem: // 常见问题
                     break;

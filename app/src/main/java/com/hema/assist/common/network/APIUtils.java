@@ -16,6 +16,9 @@ import java.util.Map;
  */
 public class APIUtils {
 
+    // 登陆 token，保活时常 1 小时
+    public static String token = "";
+
     /**
      * 获取图形验证码URL
      *

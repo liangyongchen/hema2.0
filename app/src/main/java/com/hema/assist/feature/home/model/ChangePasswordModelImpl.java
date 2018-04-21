@@ -1,10 +1,12 @@
-package com.hema.assist.feature.apply.model;
+package com.hema.assist.feature.home.model;
+
+import android.util.Base64;
 
 import com.hema.assist.common.action.Action3;
 import com.hema.assist.common.base.BaseResult;
-import com.hema.assist.entity.StageApplyInfo;
-import com.hema.assist.feature.apply.contract.StageApplyContract;
-import com.hema.assist.feature.apply.service.ApplyService;
+import com.hema.assist.entity.ChangePwdInfo;
+import com.hema.assist.feature.home.contract.ChangePasswordContract;
+import com.hema.assist.feature.home.service.HomeService;
 
 import javax.inject.Inject;
 
@@ -18,28 +20,34 @@ import io.reactivex.schedulers.Schedulers;
  * Email: 656266591@qq.com
  * Desc:
  */
-public class StageApplyModelImpl implements StageApplyContract.Model {
+public class ChangePasswordModelImpl implements ChangePasswordContract.Model {
 
-    private ApplyService saService;
+    private HomeService saService;
 
     @Inject
-    public StageApplyModelImpl(ApplyService service) {
+    public ChangePasswordModelImpl(HomeService service) {
         this.saService = service;
     }
 
 
     @Override
-    public void userInfoStep(String token, Action3<Boolean, String, BaseResult<StageApplyInfo>> callBack) {
+    public void commitPwd(String token, String oldPwd, String newPwd, Action3<Boolean, String, BaseResult<ChangePwdInfo>> callBack) {
 
-        saService.userInfoStep(token)
+        saService.modifyPwd(
+                token,
+                Base64.encodeToString(newPwd.getBytes(), Base64.DEFAULT),
+                Base64.encodeToString(oldPwd.getBytes(), Base64.DEFAULT),
+                true)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(result -> {
+
                     if (result.isSucess()) {
                         callBack.call(true, "登录成功", result);
                     } else {
                         callBack.call(false, result.message, null);
                     }
+
                 }, throwable -> {
                     callBack.call(false, "登录失败", null);
                 });
