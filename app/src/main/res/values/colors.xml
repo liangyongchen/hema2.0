@@ -9,6 +9,8 @@
     <!--<color name="colorAccent">@android:color/transparent</color>-->
     <color name="colorAccent">@color/white</color>
 
+    <!-- 九宫格 手势密码 线颜色 -->
+    <color name="lineLockColor">#7dd6fc</color>
 
     <color name="light0_blue">#b2ebff</color>
     <color name="light1_blue">#10a2e1</color>

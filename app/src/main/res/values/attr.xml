@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- banner -->
     <attr name="interval" format="integer" />
     <attr name="showIndicator" format="boolean" />
     <attr name="orientation" format="enum">
@@ -23,6 +24,23 @@
         <attr name="layoutH" format="integer" />
         <attr name="imgW" format="integer" />
         <attr name="imgH" format="integer" />
+    </declare-styleable>
+
+
+    <!-- 九宫格 -->
+    <declare-styleable name="Lock9View">
+        <attr name="lock9_nodeSrc" format="color|reference" />
+        <attr name="lock9_nodeOnSrc" format="color|reference" />
+        <attr name="lock9_nodeSize" format="dimension" />
+        <attr name="lock9_nodeAreaExpand" format="dimension" />
+        <attr name="lock9_nodeOnAnim" format="reference" />
+        <attr name="lock9_lineColor" format="color" />
+        <attr name="lock9_lineWidth" format="dimension" />
+        <attr name="lock9_padding" format="dimension" />
+        <attr name="lock9_spacing" format="dimension" />
+        <attr name="lock9_autoLink" format="boolean" />
+        <attr name="lock9_enableVibrate" format="boolean" />
+        <attr name="lock9_vibrateTime" format="integer" />
     </declare-styleable>
 
 </resources>

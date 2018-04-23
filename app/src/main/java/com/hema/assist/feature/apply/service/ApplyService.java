@@ -18,8 +18,13 @@ import retrofit2.http.Query;
  */
 public interface ApplyService {
 
-    // 认证模块服务
-    @POST(NetworkConfig.PROJECT_NAME + "/api/loanOrder/userInfoStep")
+    /**
+     *  分期申请准备数据
+     * @param id  用户ID
+     * @param token
+     * @return
+     */
+    @POST(NetworkConfig.PROJECT_NAME + "/api/loanUser/userInfoStep")
     Observable<BaseResult<StageApplyInfo>> userInfoStep(
             @Query("id") Integer id,
             @Query("token") String token);
