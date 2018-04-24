@@ -84,6 +84,7 @@
         <activity
             android:name="com.hema.assist.feature.apply.view.user.ContactActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity android:name="com.hema.assist.feature.home.view.OverdueActivity"></activity>
     </application>
 
 </manifest>

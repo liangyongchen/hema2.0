@@ -67,14 +67,14 @@ public class PresenterModule {
     // 银行卡认证
     @Provides
     @ActivityScope
-    BankContract.Presenter presenterUser(BankPresenterImpl impl) {
+    BankContract.Presenter presenterBank(BankPresenterImpl impl) {
         return impl;
     }
 
     // 银行卡认证
     @Provides
     @ActivityScope
-    PhoneContract.Presenter presenterUser(PhonePresenterImpl impl) {
+    PhoneContract.Presenter presenterPhone(PhonePresenterImpl impl) {
         return impl;
     }
 

@@ -1,15 +1,12 @@
 package com.hema.assist.feature.home.view;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 
 import com.hema.assist.common.base.BaseActivity;
 import com.hema.assist.common.views.Lock9View;
 import com.wtw.p2p.R;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 手势密码

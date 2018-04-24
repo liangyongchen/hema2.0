@@ -1,6 +1,5 @@
 package com.hema.assist.feature.home.view;
 
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,6 @@ import com.hema.assist.feature.login.view.LoginActivity;
 import com.wtw.p2p.R;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class SetActivity extends BaseActivity implements View.OnClickListener {
 

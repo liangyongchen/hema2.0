@@ -1,6 +1,5 @@
 package com.hema.assist.feature.home.presenter;
 
-import android.os.Bundle;
 
 import com.hema.assist.common.action.Action2;
 import com.hema.assist.common.base.BasePresenterImpl;

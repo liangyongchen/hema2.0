@@ -67,14 +67,14 @@ public class ModelModule {
     // 银行卡认证
     @Provides
     @ActivityScope
-    BankContract.Model userAuthModel(BankModelImpl impl) {
+    BankContract.Model bankModel(BankModelImpl impl) {
         return impl;
     }
 
     // 手机认证
     @Provides
     @ActivityScope
-    PhoneContract.Model userAuthModel(PhoneModelImpl impl) {
+    PhoneContract.Model phoneModel(PhoneModelImpl impl) {
         return impl;
     }
 

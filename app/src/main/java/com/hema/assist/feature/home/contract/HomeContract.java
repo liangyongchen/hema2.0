@@ -1,8 +1,6 @@
 package com.hema.assist.feature.home.contract;
 
-import android.os.Bundle;
 
-import com.hema.assist.common.action.Action1;
 import com.hema.assist.common.action.Action2;
 import com.hema.assist.common.base.BasePresenter;
 import com.hema.assist.common.base.BaseResult;

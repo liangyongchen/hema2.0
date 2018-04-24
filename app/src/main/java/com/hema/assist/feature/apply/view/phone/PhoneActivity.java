@@ -9,12 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hema.assist.common.base.BaseActivity;
+import com.hema.assist.component.ComponentFactory;
+import com.hema.assist.feature.apply.contract.PhoneContract;
 import com.wtw.p2p.R;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PhoneActivity extends BaseActivity {
+
+    @Inject
+    PhoneContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +36,13 @@ public class PhoneActivity extends BaseActivity {
 
     @Override
     protected void onCreateFinished() {
-        ViewHolder holder = new ViewHolder(getWindow().getDecorView());
 
+        ComponentFactory.getActivityComponent().inject(this);
+        ViewHolder viewHolder = new ViewHolder(getWindow().getDecorView());
+        presenter.attachUi(viewHolder);
     }
 
-    class ViewHolder {
+    class ViewHolder implements PhoneContract.View {
         @BindView(R.id.toolbar_back)
         ImageView toolbarBack;
         @BindView(R.id.toolbar_title)
