@@ -8,10 +8,12 @@ import com.hema.assist.feature.apply.presenter.PhonePresenterImpl;
 import com.hema.assist.feature.apply.presenter.UserAuthPresenterImpl;
 import com.hema.assist.feature.home.contract.ChangePasswordContract;
 import com.hema.assist.feature.apply.contract.StageApplyContract;
+import com.hema.assist.feature.home.contract.OverdueContract;
 import com.hema.assist.feature.home.presenter.ChangePasswordPresenterImpl;
 import com.hema.assist.feature.apply.presenter.StageApplyPresenterImpl;
 import com.hema.assist.feature.home.contract.HomeContract;
 import com.hema.assist.feature.home.presenter.HomePresenterImpl;
+import com.hema.assist.feature.home.presenter.OverduePresenterImpl;
 import com.hema.assist.feature.login.contract.LoginContract;
 import com.hema.assist.scope.ActivityScope;
 import com.hema.assist.feature.login.presenter.LoginPresenterImpl;
@@ -75,6 +77,13 @@ public class PresenterModule {
     @Provides
     @ActivityScope
     PhoneContract.Presenter presenterPhone(PhonePresenterImpl impl) {
+        return impl;
+    }
+
+    // 逾期管理
+    @Provides
+    @ActivityScope
+    OverdueContract.Presenter overduePhone(OverduePresenterImpl impl) {
         return impl;
     }
 

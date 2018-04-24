@@ -8,6 +8,7 @@ import com.hema.assist.feature.apply.view.user.JobActivity;
 import com.hema.assist.feature.home.view.ChangePasswordActivity;
 import com.hema.assist.feature.apply.view.StageApplyActivity;
 import com.hema.assist.feature.home.view.HomeActivity;
+import com.hema.assist.feature.home.view.OverdueActivity;
 import com.hema.assist.feature.login.view.LoginActivity;
 import com.hema.assist.module.ModelModule;
 import com.hema.assist.module.NetworkModule;
@@ -53,5 +54,8 @@ public interface ActivityComponent {
 
     // 手机认证
     void inject(PhoneActivity activity);
+
+    // 逾期管理
+    void inject(OverdueActivity activity);
 
 }

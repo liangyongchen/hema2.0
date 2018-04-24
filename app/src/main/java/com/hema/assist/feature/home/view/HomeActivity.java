@@ -262,6 +262,7 @@ public class HomeActivity extends BaseActivity {
             switch (item.getItemId()) {
 
                 case R.id.home_overdue: // 逾期管理
+                    IntentUtil.startActivity(HomeActivity.this, OverdueActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
                     break;
                 case R.id.home_exception_handle: // 异常处理
                     break;

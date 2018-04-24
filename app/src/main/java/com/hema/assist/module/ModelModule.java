@@ -8,10 +8,12 @@ import com.hema.assist.feature.apply.model.PhoneModelImpl;
 import com.hema.assist.feature.apply.model.UserAuthModelImpl;
 import com.hema.assist.feature.home.contract.ChangePasswordContract;
 import com.hema.assist.feature.apply.contract.StageApplyContract;
+import com.hema.assist.feature.home.contract.OverdueContract;
 import com.hema.assist.feature.home.model.ChangePasswordModelImpl;
 import com.hema.assist.feature.apply.model.StageApplyModelImpl;
 import com.hema.assist.feature.home.contract.HomeContract;
 import com.hema.assist.feature.home.model.HomeModelImpl;
+import com.hema.assist.feature.home.model.OverdueModelImpl;
 import com.hema.assist.feature.login.contract.LoginContract;
 import com.hema.assist.feature.login.model.LoginModelImpl;
 import com.hema.assist.scope.ActivityScope;
@@ -75,6 +77,13 @@ public class ModelModule {
     @Provides
     @ActivityScope
     PhoneContract.Model phoneModel(PhoneModelImpl impl) {
+        return impl;
+    }
+
+    // 手机认证
+    @Provides
+    @ActivityScope
+    OverdueContract.Model overdueModel(OverdueModelImpl impl) {
         return impl;
     }
 
