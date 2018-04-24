@@ -8,13 +8,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hema.assist.common.base.BaseActivity;
+import com.hema.assist.component.ComponentFactory;
+import com.hema.assist.feature.apply.contract.BankContract;
 import com.wtw.p2p.R;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BankActivity extends BaseActivity {
 
+    @Inject
+    BankContract.Presenter presenter;
 
     @Override
     protected int getContentViewLayoutID() {
@@ -23,10 +29,12 @@ public class BankActivity extends BaseActivity {
 
     @Override
     protected void onCreateFinished() {
+        ComponentFactory.getActivityComponent().inject(this);
         ViewHolder viewHolder = new ViewHolder(getWindow().getDecorView());
+        presenter.attachUi(viewHolder);
     }
 
-    class ViewHolder {
+    class ViewHolder implements BankContract.View {
         @BindView(R.id.toolbar_back)
         ImageView toolbarBack;
         @BindView(R.id.toolbar_title)

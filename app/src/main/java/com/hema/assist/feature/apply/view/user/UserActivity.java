@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hema.assist.common.base.BaseActivity;
+import com.hema.assist.common.utils.CommonUtil;
+import com.hema.assist.common.utils.IntentUtil;
 import com.wtw.p2p.R;
 
 import butterknife.BindView;
@@ -65,21 +67,21 @@ public class UserActivity extends BaseActivity {
             btnJob.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    IntentUtil.startActivity(UserActivity.this, JobActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
                 }
             });
 
             btnHome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    IntentUtil.startActivity(UserActivity.this, FamilyActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
                 }
             });
 
             btnContact.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    IntentUtil.startActivity(UserActivity.this, ContactActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
                 }
             });
 

@@ -4,77 +4,66 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-import retrofit2.http.Query;
-
 /**
  * Created by 河马安卓 on 2018/4/20.
  */
 
 public class StageApplyInfo implements Serializable {
-
-
     /**
-     * 返回数据 为 1 是 已完成模块 0 是 非完成模块
-     * 如果 返回只有 WCYZ 为 1 就是完成整个 流程
-     *
-     * WCYZ : 0  // 完成验证
-     * SJRZ : 0  // 手机认证
-     * GRXX : 0  // 个人信息
-     * SFRZ : 1  // 身份认证
-     * YHK : 1   // 银行卡
+     * WCYZ : 0   //  完成验证
+     * SJRZ : 0   //  手机认证
+     * DDTJ : 0   //  商品订单提交
+     * banner : {"contentUrl":"  坚儿     ","imageUrl":"https://timgsa.baidu.com/timg?image=&quality=80&size=b9999_10000&sec=1524047779120&di=44e236fe3245cd9d670abd3dfcaf6128&imgtype=0&src=http%3A%2F%2Fpic4.nipic.com%2F20091216%2F1388021_214455008211_2.jpg","title":"  坚儿     "}
+     * GRXX : 0   //  个人信息
+     * DDDQR : 0  //  订单待确认
+     * SFRZ : 1   //  身份认证
+     * YHK : 0    //  银行卡
      */
 
     @SerializedName("WCYZ")
-    private int WCYZ;
+    public int WCYZ;
 
     @SerializedName("SJRZ")
-    private int SJRZ;
+    public int SJRZ;
+
+    @SerializedName("DDTJ")
+    public int DDTJ;
 
     @SerializedName("GRXX")
-    private int GRXX;
+    public int GRXX;
+
+    @SerializedName("DDDQR")
+    public int DDDQR;
 
     @SerializedName("SFRZ")
-    private int SFRZ;
+    public int SFRZ;
 
-    private int YHK;
+    @SerializedName("YHK")
+    public int YHK;
 
-    public int getWCYZ() {
-        return WCYZ;
+    @SerializedName("banner")
+    public BannerBean banner;
+
+    public static class BannerBean implements Serializable{
+        /**
+         * contentUrl :   坚儿
+         * imageUrl : https://timgsa.baidu.com/timg?image=&quality=80&size=b9999_10000&sec=1524047779120&di=44e236fe3245cd9d670abd3dfcaf6128&imgtype=0&src=http%3A%2F%2Fpic4.nipic.com%2F20091216%2F1388021_214455008211_2.jpg
+         * title :   坚儿
+         */
+
+        @SerializedName("contentUrl")
+        public String contentUrl;
+
+        @SerializedName("imageUrl")
+        public String imageUrl;
+
+        @SerializedName("title")
+        public String title;
+
     }
 
-    public void setWCYZ(int WCYZ) {
-        this.WCYZ = WCYZ;
-    }
 
-    public int getSJRZ() {
-        return SJRZ;
-    }
 
-    public void setSJRZ(int SJRZ) {
-        this.SJRZ = SJRZ;
-    }
 
-    public int getGRXX() {
-        return GRXX;
-    }
 
-    public void setGRXX(int GRXX) {
-        this.GRXX = GRXX;
-    }
-
-    public int getSFRZ() {
-        return SFRZ;
-    }
-
-    public void setSFRZ(int SFRZ) {
-        this.SFRZ = SFRZ;
-    }
-
-    public int getYHK() {
-        return YHK;
-    }
-
-    public void setYHK(int YHK) {
-        this.YHK = YHK;
-    }
 }

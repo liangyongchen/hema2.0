@@ -19,18 +19,21 @@ import dagger.Provides;
 @Module
 public class NetworkModule {
 
+    // 登陆界面
     @Provides
     @ActivityScope
     LoginService loginService() {
         return ServiceFactory.getInstance().createService(LoginService.class);
     }
 
+    // 申请认证模块服务
     @Provides
     @ActivityScope
     ApplyService stageApplyService() {
         return ServiceFactory.getInstance().createService(ApplyService.class);
     }
 
+    // 主界面
     @Provides
     @ActivityScope
     HomeService changePasswordService() {

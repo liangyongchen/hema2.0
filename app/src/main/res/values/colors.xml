@@ -7,7 +7,7 @@
 
     <!--控件的选中颜色，即checked或selected状态的颜色。-->
     <!--<color name="colorAccent">@android:color/transparent</color>-->
-    <color name="colorAccent">@color/white</color>
+    <color name="colorAccent">@color/colorPrimary</color>
 
     <!-- 九宫格 手势密码 线颜色 -->
     <color name="lineLockColor">#7dd6fc</color>

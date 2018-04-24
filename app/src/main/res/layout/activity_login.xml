@@ -48,6 +48,7 @@
         android:singleLine="true"
         android:text="15014753337"
         android:textColor="@color/white"
+        android:textCursorDrawable="@drawable/color_cursor1"
         android:textSize="14dp" />
 
     <EditText
@@ -64,6 +65,7 @@
         android:maxLines="1"
         android:padding="5dp"
         android:singleLine="true"
+        android:textCursorDrawable="@drawable/color_cursor1"
         android:text="123456"
         android:textColor="@color/white"
         android:textSize="14dp" />
@@ -89,6 +91,7 @@
             android:drawablePadding="5dp"
             android:hint="请输入验证码"
             android:inputType="number"
+            android:textCursorDrawable="@drawable/color_cursor1"
             android:maxLines="1"
             android:padding="5dp"
             android:singleLine="true"

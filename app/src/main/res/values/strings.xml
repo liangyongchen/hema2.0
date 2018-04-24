@@ -9,5 +9,8 @@
     <string name="YHK">银行卡</string>
     <string name="GRXX">个人信息</string>
     <string name="SJRZ">手机认证</string>
+    <string name="YWC">已完成</string>
+    <string name="QRZ">去认证</string>
+
 
 </resources>

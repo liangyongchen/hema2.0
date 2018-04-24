@@ -1,5 +1,11 @@
 package com.hema.assist.module;
 
+import com.hema.assist.feature.apply.contract.BankContract;
+import com.hema.assist.feature.apply.contract.PhoneContract;
+import com.hema.assist.feature.apply.contract.UserAuthContract;
+import com.hema.assist.feature.apply.presenter.BankPresenterImpl;
+import com.hema.assist.feature.apply.presenter.PhonePresenterImpl;
+import com.hema.assist.feature.apply.presenter.UserAuthPresenterImpl;
 import com.hema.assist.feature.home.contract.ChangePasswordContract;
 import com.hema.assist.feature.apply.contract.StageApplyContract;
 import com.hema.assist.feature.home.presenter.ChangePasswordPresenterImpl;
@@ -22,29 +28,54 @@ import dagger.Provides;
  */
 @Module
 public class PresenterModule {
+
+    // 登陆界面
     @Provides
     @ActivityScope
     LoginContract.Presenter presenter(LoginPresenterImpl impl) {
         return impl;
     }
 
+    // 主界面
     @Provides
     @ActivityScope
     HomeContract.Presenter presenterHome(HomePresenterImpl impl) {
         return impl;
     }
 
+    // 申请认证
     @Provides
     @ActivityScope
     StageApplyContract.Presenter presenterStageApply(StageApplyPresenterImpl impl) {
         return impl;
     }
 
+    // 修改密码
     @Provides
     @ActivityScope
     ChangePasswordContract.Presenter presenterChangePwd(ChangePasswordPresenterImpl impl) {
         return impl;
     }
 
+    // 个人信息
+    @Provides
+    @ActivityScope
+    UserAuthContract.Presenter presenterUser(UserAuthPresenterImpl impl) {
+        return impl;
+    }
+
+    // 银行卡认证
+    @Provides
+    @ActivityScope
+    BankContract.Presenter presenterUser(BankPresenterImpl impl) {
+        return impl;
+    }
+
+    // 银行卡认证
+    @Provides
+    @ActivityScope
+    PhoneContract.Presenter presenterUser(PhonePresenterImpl impl) {
+        return impl;
+    }
 
 }

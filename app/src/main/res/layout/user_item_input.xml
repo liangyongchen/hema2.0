@@ -27,7 +27,11 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:gravity="right|center"
-            android:text="测试"
+            android:text=""
+            android:imeOptions="actionNext"
+            android:nextFocusForward="@+id/et_login"
+            android:singleLine="true"
+            android:textCursorDrawable="@drawable/color_cursor"
             android:textColor="@color/black2"
             android:textSize="14dp" />
 

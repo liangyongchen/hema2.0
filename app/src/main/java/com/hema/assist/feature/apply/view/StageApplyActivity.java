@@ -19,6 +19,7 @@ import com.hema.assist.feature.apply.contract.StageApplyContract;
 import com.hema.assist.feature.apply.view.bank.BankActivity;
 import com.hema.assist.feature.apply.view.idcard.IDCardActivity;
 import com.hema.assist.feature.apply.view.phone.PhoneActivity;
+import com.hema.assist.feature.apply.view.user.UserActivity;
 import com.wtw.p2p.R;
 
 import org.apache.commons.lang3.StringUtils;
@@ -93,6 +94,16 @@ public class StageApplyActivity extends BaseActivity {
 
             initStageApply();
 
+            initEvent();
+
+        }
+
+        private void initEvent() {
+
+            btnCommit.setOnClickListener(v -> {
+                IntentUtil.startActivity(StageApplyActivity.this, UserActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
+            });
+
         }
 
         private void initStageApply() {
@@ -161,6 +172,7 @@ public class StageApplyActivity extends BaseActivity {
                             IntentUtil.startActivity(StageApplyActivity.this, BankActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
                             break;
                         case R.string.GRXX:
+                            IntentUtil.startActivity(StageApplyActivity.this, UserActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
                             break;
                         case R.string.SJRZ:
                             IntentUtil.startActivity(StageApplyActivity.this, PhoneActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);

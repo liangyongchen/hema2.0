@@ -74,7 +74,16 @@
         <activity android:name="com.hema.assist.feature.apply.view.idcard.IDCardActivity" />
         <activity android:name="com.hema.assist.feature.apply.view.phone.PhoneActivity" />
         <activity android:name="com.hema.assist.feature.apply.view.bank.BankActivity" />
-        <activity android:name="com.hema.assist.feature.apply.view.user.UserActivity"></activity>
+        <activity android:name="com.hema.assist.feature.apply.view.user.UserActivity" />
+        <activity
+            android:name="com.hema.assist.feature.apply.view.user.JobActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name="com.hema.assist.feature.apply.view.user.FamilyActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name="com.hema.assist.feature.apply.view.user.ContactActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
     </application>
 
 </manifest>

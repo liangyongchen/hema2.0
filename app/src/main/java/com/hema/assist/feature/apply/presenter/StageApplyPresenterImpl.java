@@ -63,49 +63,49 @@ public class StageApplyPresenterImpl extends BasePresenterImpl<StageApplyContrac
             return list; // 防止返回null适配器报错
         }
 
-        if (data.getWCYZ() == 1) {
-            list.add(new CardCertificationAdapter.ItemModel(R.string.SFRZ, R.drawable.fenqi_one_s2, "请出示身份证正反面", "已完成", true));
-            list.add(new CardCertificationAdapter.ItemModel(R.string.YHK, R.drawable.fenqi_two_s2, "请出示身份证正反面", "已完成", true));
-            list.add(new CardCertificationAdapter.ItemModel(R.string.GRXX, R.drawable.fenqi_three_s2, "请出示身份证正反面", "已完成", true));
-            list.add(new CardCertificationAdapter.ItemModel(R.string.SJRZ, R.drawable.fenqi_four_s2, "请出示身份证正反面", "已完成", true));
+        if (data.WCYZ == 1) {
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SFRZ, R.drawable.fenqi_one_s2, "请出示身份证正反面", R.string.YWC, true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.YHK, R.drawable.fenqi_two_s2, "请出示身份证正反面",  R.string.YWC, true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.GRXX, R.drawable.fenqi_three_s2, "请出示身份证正反面",  R.string.YWC, true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SJRZ, R.drawable.fenqi_four_s2, "请出示身份证正反面",  R.string.YWC, true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc4_s2);
             return list;
         }
 
         // 身份认证
-        if (data.getSFRZ() == 1) {
-            list.add(new CardCertificationAdapter.ItemModel(R.string.SFRZ, R.drawable.fenqi_one_s2, "请出示身份证正反面", "已完成", true));
+        if (data.SFRZ == 1) {
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SFRZ, R.drawable.fenqi_one_s2, "请出示身份证正反面",  R.string.YWC, true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc1_s2);
         } else {
-            list.add(new CardCertificationAdapter.ItemModel(R.string.SFRZ, R.drawable.fenqi_one_s2, "请出示身份证正反面", "去认证", false));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SFRZ, R.drawable.fenqi_one_s2, "请出示身份证正反面", R.string.QRZ, false));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc1_s2);
         }
 
         // 银行卡
-        if (data.getYHK() == 1) {
-            list.add(new CardCertificationAdapter.ItemModel(R.string.YHK, R.drawable.fenqi_two_s2, "请出示身份证正反面", "已完成", true));
+        if (data.YHK == 1) {
+            list.add(new CardCertificationAdapter.ItemModel(R.string.YHK, R.drawable.fenqi_two_s2, "请出示身份证正反面",  R.string.YWC, true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc2_s2);
         } else {
-            list.add(new CardCertificationAdapter.ItemModel(R.string.YHK, R.drawable.fenqi_two_s2, "请出示身份证正反面", "去认证", false));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.YHK, R.drawable.fenqi_two_s2, "请出示身份证正反面", R.string.QRZ, false));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc1_s2);
         }
 
         // 个人信息
-        if (data.getGRXX() == 1) {
-            list.add(new CardCertificationAdapter.ItemModel(R.string.GRXX, R.drawable.fenqi_three_s2, "请出示身份证正反面", "已完成", true));
+        if (data.GRXX == 1) {
+            list.add(new CardCertificationAdapter.ItemModel(R.string.GRXX, R.drawable.fenqi_three_s2, "请出示身份证正反面",  R.string.YWC, true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc3_s2);
         } else {
-            list.add(new CardCertificationAdapter.ItemModel(R.string.GRXX, R.drawable.fenqi_three_s2, "请出示身份证正反面", "去认证", false));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.GRXX, R.drawable.fenqi_three_s2, "请出示身份证正反面", R.string.QRZ, false));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc2_s2);
 
         }
 
         // 手机认证
-        if (data.getSJRZ() == 1) {
-            list.add(new CardCertificationAdapter.ItemModel(R.string.SJRZ, R.drawable.fenqi_four_s2, "请出示身份证正反面", "已完成", true));
+        if (data.SJRZ == 1) {
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SJRZ, R.drawable.fenqi_four_s2, "请出示身份证正反面",  R.string.YWC, true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc4_s2);
         } else {
-            list.add(new CardCertificationAdapter.ItemModel(R.string.SJRZ, R.drawable.fenqi_four_s2, "请出示身份证正反面", "去认证", false));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SJRZ, R.drawable.fenqi_four_s2, "请出示身份证正反面",  R.string.QRZ, false));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc3_s2);
         }
 

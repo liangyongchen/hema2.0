@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -92,7 +91,7 @@ public class CardCertificationAdapter extends RecyclerView.Adapter<CardCertifica
             tvTitle.setText(String.format("%s", mContext.getResources().getString(mData.get(position).title)));
             ivCard.setImageDrawable(mContext.getResources().getDrawable(mData.get(position).img));
             tvMsg.setText(String.format("%s", mData.get(position).msg));
-            btnAuthentication.setText(String.format("%s", mData.get(position).btn));
+            btnAuthentication.setText(String.format("%s", mContext.getResources().getString(mData.get(position).btn)));
             btnAuthentication.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -107,12 +106,12 @@ public class CardCertificationAdapter extends RecyclerView.Adapter<CardCertifica
         public int title;
         public int img;
         public String msg;
-        public String btn;
+        public int btn;
 
         // 标识是否已经认证 true 已经认证 ，false，没有认证
         public boolean isSign;
 
-        public ItemModel(int title, int img, String msg, String btn, boolean isSign) {
+        public ItemModel(int title, int img, String msg, int btn, boolean isSign) {
             this.title = title;
             this.img = img;
             this.msg = msg;

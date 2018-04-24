@@ -3,6 +3,7 @@ package com.hema.assist.common.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -45,11 +46,16 @@ public class SignTextView extends TextView {
 
     public void setSignText(String text) {
         if (sign) {
-            String s = "<font color='#ff4850'>*</font>";
-            setText(text + s);
+            String s = text + "<font color='#ff4850'>*</font>";
+            setText(Html.fromHtml(s));
         } else {
             setText(text);
         }
+    }
+
+    public void setSignText(String text, boolean isSign) {
+        this.sign = isSign;
+        setSignText(text);
     }
 
     // 设置是否标识
