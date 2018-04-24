@@ -4,4 +4,10 @@
     <string name="navigation_drawer_open">打开侧栏</string>
     <string name="navigation_drawer_close">关闭侧栏</string>
 
+    <!-- 认证模块 -->
+    <string name="SFRZ">身份认证</string>
+    <string name="YHK">银行卡</string>
+    <string name="GRXX">个人信息</string>
+    <string name="SJRZ">手机认证</string>
+
 </resources>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hema.assist.feature.apply.view.phone.PhoneActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/app_default_background_color"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/dp_10"
+            android:text="请输入手机运行商服务密码" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/applyTextView"
+                android:text="手机号" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                style="@style/applyEditText"
+                android:gravity="right|center"
+                android:hint="请输入手机号码"
+                android:paddingRight="@dimen/dp_10" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/applyTextView"
+                android:text="服务密码" />
+
+            <EditText
+                android:id="@+id/et_Pwd"
+                style="@style/applyEditText"
+                android:gravity="right|center"
+                android:hint="请输入服务密码"
+                android:paddingRight="@dimen/dp_10" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_12"
+            android:text="*如忘记密码请拨打运营商电话重置密码"
+            android:textColor="@color/app_theme_color" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="26dp"
+            app:cardCornerRadius="5dp">
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/colorPrimary"
+                android:text="下一步"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

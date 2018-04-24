@@ -6,7 +6,7 @@ import com.hema.assist.common.network.NetworkConfig;
 import com.hema.assist.entity.StageApplyInfo;
 
 import io.reactivex.Observable;
-import retrofit2.http.POST;
+import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
@@ -21,12 +21,12 @@ public interface ApplyService {
     /**
      *  分期申请准备数据
      * @param id  用户ID
-     * @param token
+     * @param token 登陆token
      * @return
      */
-    @POST(NetworkConfig.PROJECT_NAME + "/api/loanUser/userInfoStep")
+    @GET(NetworkConfig.PROJECT_NAME + "/api/loanUser/userInfoStep")
     Observable<BaseResult<StageApplyInfo>> userInfoStep(
-            @Query("id") Integer id,
+            @Query("userId") Integer id,
             @Query("token") String token);
 
 }

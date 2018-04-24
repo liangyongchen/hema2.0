@@ -43,4 +43,10 @@
         <attr name="lock9_vibrateTime" format="integer" />
     </declare-styleable>
 
+    <!-- 标记 SignTextView -->
+    <!-- 九宫格 -->
+    <declare-styleable name="SignText">
+        <attr name="sign" format="boolean" />
+    </declare-styleable>
+
 </resources>

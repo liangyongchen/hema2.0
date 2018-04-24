@@ -70,7 +70,11 @@
         <activity android:name="com.hema.assist.feature.home.view.ChangePasswordActivity" />
         <activity android:name="com.hema.assist.feature.home.view.AuestionBackActivity" />
         <activity android:name="com.hema.assist.feature.home.view.SetActivity" />
-        <activity android:name="com.hema.assist.feature.home.view.HandPwdActivity"></activity>
+        <activity android:name="com.hema.assist.feature.home.view.HandPwdActivity" />
+        <activity android:name="com.hema.assist.feature.apply.view.idcard.IDCardActivity" />
+        <activity android:name="com.hema.assist.feature.apply.view.phone.PhoneActivity" />
+        <activity android:name="com.hema.assist.feature.apply.view.bank.BankActivity" />
+        <activity android:name="com.hema.assist.feature.apply.view.user.UserActivity"></activity>
     </application>
 
 </manifest>

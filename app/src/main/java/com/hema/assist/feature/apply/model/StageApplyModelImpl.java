@@ -36,12 +36,12 @@ public class StageApplyModelImpl implements StageApplyContract.Model {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(result -> {
                     if (result.isSucess()) {
-                        callBack.call(true, "登录成功", result);
+                        callBack.call(true, "获取成功", result);
                     } else {
                         callBack.call(false, result.message, null);
                     }
                 }, throwable -> {
-                    callBack.call(false, "登录失败", null);
+                    callBack.call(false, "获取失败", null);
                 });
 
     }

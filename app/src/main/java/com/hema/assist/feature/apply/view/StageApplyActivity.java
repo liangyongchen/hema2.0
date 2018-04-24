@@ -7,9 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hema.assist.common.base.BaseResult;
 import com.hema.assist.common.network.APIUtils;
-import com.hema.assist.entity.StageApplyInfo;
 import com.hema.assist.feature.apply.adapter.BannerAdapter;
 import com.hema.assist.common.base.BaseActivity;
 import com.hema.assist.common.utils.CommonUtil;
@@ -18,6 +16,9 @@ import com.hema.assist.common.views.BannerLayout;
 import com.hema.assist.component.ComponentFactory;
 import com.hema.assist.feature.apply.adapter.CardCertificationAdapter;
 import com.hema.assist.feature.apply.contract.StageApplyContract;
+import com.hema.assist.feature.apply.view.bank.BankActivity;
+import com.hema.assist.feature.apply.view.idcard.IDCardActivity;
+import com.hema.assist.feature.apply.view.phone.PhoneActivity;
 import com.wtw.p2p.R;
 
 import org.apache.commons.lang3.StringUtils;
@@ -100,6 +101,8 @@ public class StageApplyActivity extends BaseActivity {
 
         private void initBanner() {
 
+            // 去掉指示器
+            authentication.setShowIndicator(false);
 
         }
 
@@ -136,29 +139,6 @@ public class StageApplyActivity extends BaseActivity {
 
         }
 
-        @Override
-        public void setCard(List<CardCertificationAdapter.ItemModel> data) {
-
-            CardCertificationAdapter adapter1 = new CardCertificationAdapter(StageApplyActivity.this, data);
-            adapter1.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
-                @Override
-                public void onItemClick(int position) {
-                    StageApplyActivity.this.toast(String.format(" 点击了 %s 项 ", position));
-                }
-            });
-
-            adapter1.setOnItemClick(new CardCertificationAdapter.ItemClick() {
-                @Override
-                public void onItemClick(View v, int position) {
-                    // 认证跳转
-                    toast(String.format("跳转 %s  ，点击了", position));
-
-                }
-            });
-
-            authentication.setAdapter(adapter1);
-            authentication.setShowIndicator(false);
-        }
 
         @Override
         public void setIvSpeedSrc(int id) {
@@ -166,13 +146,33 @@ public class StageApplyActivity extends BaseActivity {
         }
 
         @Override
-        public void setStageAplly() {
+        public void userInfoStepSuccess(String msg, List<CardCertificationAdapter.ItemModel> data) {
+            CardCertificationAdapter adapter1 = new CardCertificationAdapter(StageApplyActivity.this, data);
 
-        }
+            adapter1.setOnItemClick((view, position, model) -> {
 
-        @Override
-        public void userInfoStepSuccess(String msg, BaseResult<StageApplyInfo> callBack) {
+                if (model.isSign) {
 
+                    switch (model.title) {
+                        case R.string.SFRZ:
+                            IntentUtil.startActivity(StageApplyActivity.this, IDCardActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
+                            break;
+                        case R.string.YHK:
+                            IntentUtil.startActivity(StageApplyActivity.this, BankActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
+                            break;
+                        case R.string.GRXX:
+                            break;
+                        case R.string.SJRZ:
+                            IntentUtil.startActivity(StageApplyActivity.this, PhoneActivity.class, CommonUtil.enumActionType.ACTION_FORWARD);
+                            break;
+                    }
+                } else {
+                    toast(String.format("该项 %s", model.btn));
+                }
+
+            });
+
+            authentication.setAdapter(adapter1);
         }
 
         @Override

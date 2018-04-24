@@ -1,16 +1,10 @@
 package com.hema.assist.feature.apply.presenter;
 
-import android.app.Activity;
 
-import com.hema.assist.common.action.Action2;
-import com.hema.assist.common.action.Action3;
 import com.hema.assist.common.base.BasePresenterImpl;
-import com.hema.assist.common.base.BaseResult;
-import com.hema.assist.entity.LoginInfo;
 import com.hema.assist.entity.StageApplyInfo;
 import com.hema.assist.feature.apply.adapter.CardCertificationAdapter;
 import com.hema.assist.feature.apply.contract.StageApplyContract;
-import com.hema.assist.feature.home.contract.HomeContract;
 import com.wtw.p2p.R;
 
 import java.util.ArrayList;
@@ -49,77 +43,73 @@ public class StageApplyPresenterImpl extends BasePresenterImpl<StageApplyContrac
 
 
     @Override
-    public void getStageAplly() {
-
-    }
-
-    @Override
     public void userInfoStep(int id, String token) {
 
-        applyModel.userInfoStep(id, token, new Action3<Boolean, String, BaseResult<StageApplyInfo>>() {
-            @Override
-            public void call(Boolean aBoolean, String s, BaseResult<StageApplyInfo> result) {
-                if (aBoolean) {
-                    mUi.userInfoStepSuccess(s, result);
-                    getCardData(result.getData());
-                } else {
-                    mUi.userInfoStepFailed(s);
-                }
+        applyModel.userInfoStep(id, token, (aBoolean, s, result) -> {
+            if (aBoolean) {
+                mUi.userInfoStepSuccess(s, getCardData(result.getData()));
+            } else {
+                mUi.userInfoStepFailed(s);
             }
         });
 
     }
 
 
-    private void getCardData(StageApplyInfo data) {
+    private List<CardCertificationAdapter.ItemModel> getCardData(StageApplyInfo data) {
 
         List<CardCertificationAdapter.ItemModel> list = new ArrayList<>();
+        if (data == null) {
+            return list; // 防止返回null适配器报错
+        }
+
         if (data.getWCYZ() == 1) {
-            list.add(new CardCertificationAdapter.ItemModel("身份认证", R.drawable.fenqi_one_s2, "请出示身份证正反面", "已完成", true));
-            list.add(new CardCertificationAdapter.ItemModel("银行卡", R.drawable.fenqi_two_s2, "请出示身份证正反面", "已完成", true));
-            list.add(new CardCertificationAdapter.ItemModel("个人信息", R.drawable.fenqi_three_s2, "请出示身份证正反面", "已完成", true));
-            list.add(new CardCertificationAdapter.ItemModel("手机认证", R.drawable.fenqi_four_s2, "请出示身份证正反面", "已完成", true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SFRZ, R.drawable.fenqi_one_s2, "请出示身份证正反面", "已完成", true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.YHK, R.drawable.fenqi_two_s2, "请出示身份证正反面", "已完成", true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.GRXX, R.drawable.fenqi_three_s2, "请出示身份证正反面", "已完成", true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SJRZ, R.drawable.fenqi_four_s2, "请出示身份证正反面", "已完成", true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc4_s2);
+            return list;
         }
 
         // 身份认证
         if (data.getSFRZ() == 1) {
-            list.add(new CardCertificationAdapter.ItemModel("身份认证", R.drawable.fenqi_one_s2, "请出示身份证正反面", "已完成", true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SFRZ, R.drawable.fenqi_one_s2, "请出示身份证正反面", "已完成", true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc1_s2);
         } else {
-            list.add(new CardCertificationAdapter.ItemModel("身份认证", R.drawable.fenqi_one_s2, "请出示身份证正反面", "去认证", false));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SFRZ, R.drawable.fenqi_one_s2, "请出示身份证正反面", "去认证", false));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc1_s2);
         }
 
         // 银行卡
         if (data.getYHK() == 1) {
-            list.add(new CardCertificationAdapter.ItemModel("银行卡", R.drawable.fenqi_two_s2, "请出示身份证正反面", "已完成", true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.YHK, R.drawable.fenqi_two_s2, "请出示身份证正反面", "已完成", true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc2_s2);
         } else {
-            list.add(new CardCertificationAdapter.ItemModel("银行卡", R.drawable.fenqi_two_s2, "请出示身份证正反面", "去认证", false));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.YHK, R.drawable.fenqi_two_s2, "请出示身份证正反面", "去认证", false));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc1_s2);
         }
 
         // 个人信息
         if (data.getGRXX() == 1) {
-            list.add(new CardCertificationAdapter.ItemModel("个人信息", R.drawable.fenqi_three_s2, "请出示身份证正反面", "已完成", true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.GRXX, R.drawable.fenqi_three_s2, "请出示身份证正反面", "已完成", true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc3_s2);
         } else {
-            list.add(new CardCertificationAdapter.ItemModel("个人信息", R.drawable.fenqi_three_s2, "请出示身份证正反面", "去认证", false));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.GRXX, R.drawable.fenqi_three_s2, "请出示身份证正反面", "去认证", false));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc2_s2);
 
         }
 
         // 手机认证
         if (data.getSJRZ() == 1) {
-            list.add(new CardCertificationAdapter.ItemModel("手机认证", R.drawable.fenqi_four_s2, "请出示身份证正反面", "已完成", true));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SJRZ, R.drawable.fenqi_four_s2, "请出示身份证正反面", "已完成", true));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc4_s2);
         } else {
-            list.add(new CardCertificationAdapter.ItemModel("手机认证", R.drawable.fenqi_four_s2, "请出示身份证正反面", "去认证", false));
+            list.add(new CardCertificationAdapter.ItemModel(R.string.SJRZ, R.drawable.fenqi_four_s2, "请出示身份证正反面", "去认证", false));
             mUi.setIvSpeedSrc(R.drawable.fenqi_lc3_s2);
         }
 
-        mUi.setCard(list);
+        return list;
     }
 
 

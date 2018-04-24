@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="18dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="18dp">
+
+        <com.hema.assist.common.views.SignTextView
+            android:id="@+id/stv_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电子邮箱"
+            android:textColor="@color/black2"
+            android:textSize="15dp" />
+
+
+        <LinearLayout
+            android:id="@+id/btn_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right|center"
+                android:text="请选择"
+                android:textColor="@color/light1_blue"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="14dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/list_right_ls_s2" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

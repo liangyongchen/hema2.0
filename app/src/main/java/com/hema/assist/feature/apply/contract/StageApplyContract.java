@@ -1,10 +1,8 @@
 package com.hema.assist.feature.apply.contract;
 
-import com.hema.assist.common.action.Action2;
 import com.hema.assist.common.action.Action3;
 import com.hema.assist.common.base.BasePresenter;
 import com.hema.assist.common.base.BaseResult;
-import com.hema.assist.entity.LoginInfo;
 import com.hema.assist.entity.StageApplyInfo;
 import com.hema.assist.feature.apply.adapter.CardCertificationAdapter;
 
@@ -30,28 +28,26 @@ public interface StageApplyContract {
 
     interface View {
 
+        // 设置头部banner信息
         void setBanner(List<String> data);
 
-        void setCard(List<CardCertificationAdapter.ItemModel> data);
-
+        // 设置认证的进度
         void setIvSpeedSrc(int id);
 
-        void setStageAplly();
-
         // 返回认证界面列表信息
-        void userInfoStepSuccess(String msg,BaseResult<StageApplyInfo> callBack);
+        void userInfoStepSuccess(String msg,List<CardCertificationAdapter.ItemModel> data);
 
+        // 认证数据获取失败
         void userInfoStepFailed(String msg);
 
     }
 
     interface Presenter extends BasePresenter<View> {
 
+        // 获取banner信息
         void getBannerData();
 
-        void getStageAplly();
-
-        // 刚进入界面，获取数据
+        // 获取认证界面列表信息
         void userInfoStep(int id,String token);
 
 
