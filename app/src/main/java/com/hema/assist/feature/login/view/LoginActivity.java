@@ -24,7 +24,6 @@ import com.hema.assist.component.ComponentFactory;
 import com.hema.assist.feature.login.contract.LoginContract;
 
 
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -151,6 +150,7 @@ public class LoginActivity extends BaseActivity {
         @Override
         public void loginFailed(String error) {
             toast(error);
+            etCode.setText("");
         }
 
         @Override

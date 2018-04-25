@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hema.assist.common.base.BaseActivity;
+import com.hema.assist.common.base.BaseListActivity;
 import com.hema.assist.common.base.BaseResult;
 import com.hema.assist.common.utils.CommonUtil;
 import com.hema.assist.common.utils.IntentUtil;
@@ -34,7 +35,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseListActivity {
 
     @Inject
     HomeContract.Presenter homePresenter;
